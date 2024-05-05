@@ -44,7 +44,7 @@ ollama run example "What is your favourite condiment?"
 First, clone the `ollama/ollama` repo:
 
 ```
-git clone git@github.com:ollama/ollama.git ollama
+git clone https://github.com/reski-rukmantiyo/ollama.git ollama
 cd ollama
 ```
 
@@ -53,6 +53,12 @@ and then fetch its `llama.cpp` submodule:
 ```shell
 git submodule init
 git submodule update llm/llama.cpp
+```
+
+Optional, if you havent install python3, then install it
+
+```
+sudo apt install python3-pip  python3-venv -y
 ```
 
 Next, install the Python dependencies:
@@ -76,6 +82,7 @@ If the model is currently hosted in a HuggingFace repository, first clone that r
 Install [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage), verify it's installed, and then clone the model's repository:
 
 ```
+sudo apt install git-lfs -y
 git lfs install
 git clone https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1 model
 ```
@@ -85,7 +92,7 @@ git clone https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1 model
 > Note: some model architectures require using specific convert scripts. For example, Qwen models require running `convert-hf-to-gguf.py` instead of `convert.py`
 
 ```
-python llm/llama.cpp/convert.py ./model --outtype f16 --outfile converted.bin
+python3 llm/llama.cpp/convert.py ./model --outtype f16 --outfile converted.bin
 ```
 
 ### Quantize the model
