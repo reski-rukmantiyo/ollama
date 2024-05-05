@@ -79,12 +79,12 @@ make -C llm/llama.cpp quantize
 
 If the model is currently hosted in a HuggingFace repository, first clone that repository to download the raw model.
 
-Install [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage), verify it's installed, and then clone the model's repository:
+Make sure you already install huggingface CLI (https://huggingface.co/docs/huggingface_hub/main/en/installation)[huggingface-cli]
 
 ```
-sudo apt install git-lfs -y
-git lfs install
-git clone https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1 model
+git config --global credential.helper store
+huggingface-cli login
+huggingface-cli download  --local-dir model  meta-llama/Meta-Llama-3-8B-Instruct
 ```
 
 ### Convert the model
